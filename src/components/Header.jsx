@@ -1,5 +1,4 @@
-import { Search } from 'lucide-react'
-import { ArrowBigRightIcon } from 'lucide-react'
+import { ChevronRight, Search } from 'lucide-react'
 import '../App.css'
 
 export const Header = ({ sidebarToggle, setSidebarToggle }) => {
@@ -7,7 +6,7 @@ export const Header = ({ sidebarToggle, setSidebarToggle }) => {
         <nav className="w-full py-10 px-8 transition-all duration-300 flex items-center justify-between">
             <div className='flex items-center'>
                 {/* by clicking on this icon, the sidebarToggle value will change to TRUE using our setSidebarToggle state */}
-                <ArrowBigRightIcon className='text-white cursor-pointer mr-5' onClick={() => setSidebarToggle(!sidebarToggle)}/>
+                <ChevronRight className='text-white cursor-pointer mr-5' onClick={() => setSidebarToggle(!sidebarToggle)}/>
 
 
                 <div>
