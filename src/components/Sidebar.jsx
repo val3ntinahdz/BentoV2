@@ -56,7 +56,7 @@ export const Sidebar = ({ sidebarToggle }) => {
         </ul>
       </nav>
 
-      {/* Footer (opcional) */}
+      {/* Footer */}
       <div className="pt-4 border-t border-neutral-800">
         <button className="flex items-center gap-3 px-3 py-2.5 rounded-lg w-full text-neutral-400 hover:text-white hover:bg-neutral-800/50 transition-all duration-200 font-onest font-semibold text-sm">
           <Settings className="w-5 h-5" />

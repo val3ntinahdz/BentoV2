@@ -1,12 +1,18 @@
-import { ChevronRight } from 'lucide-react'
+import { ChevronRight, Search } from 'lucide-react'
 import '../App.css'
 
-export const Header = ({ sidebarToggle, setSidebarToggle }) => {
+const Header = ({ sidebarToggle, setSidebarToggle }) => {
     return (
         <nav className="w-full py-10 px-8 transition-all duration-300 flex items-center justify-between">
-            <div className='flex items-center'>
-                {/* by clicking on this icon, the sidebarToggle value will change to TRUE using our setSidebarToggle state */}
-                <ChevronRight className='text-white cursor-pointer mr-5' onClick={() => setSidebarToggle(!sidebarToggle)}/>
+            <div className='flex items-center gap-6'>
+                <button
+                onClick={() => setSidebarToggle(!sidebarToggle)}
+                className='rounded-xl bg-[#2a2a2a] p-2.5 group relative'
+                >
+                    
+                    {/* by clicking on this icon, the sidebarToggle value will change to TRUE using our setSidebarToggle state */}
+                    <ChevronRight className={`text-white cursor-pointer w-5 h-5 ${ sidebarToggle ? "rotate-0" : "rotate-180" }`}/>
+                </button>
 
 
                 <div>
@@ -20,3 +26,6 @@ export const Header = ({ sidebarToggle, setSidebarToggle }) => {
         // <></>
     )
 }
+
+
+export default Header;
