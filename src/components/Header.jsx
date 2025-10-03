@@ -1,4 +1,4 @@
-import { ChevronRight, Search } from 'lucide-react'
+import { ChevronRight } from 'lucide-react'
 import '../App.css'
 
 export const Header = ({ sidebarToggle, setSidebarToggle }) => {
@@ -16,18 +16,6 @@ export const Header = ({ sidebarToggle, setSidebarToggle }) => {
                     </p>
                 </div>
             </div>
-
-            <div className='flex items-center gap-x-5'>
-                <div className='relative w-48 md:w-64'>
-                    <span className='relative md:absolute inset-y-0 left-0 flex items-center pl-2'>
-                        <button className='p-1 focus:outline-none text-black md:text-black'><Search /></button>
-                    </span>
-                    
-                    <input type="text" className='w-full px-4 py-1 pl-10 rounded-3xl shadow outline-none hidden md:block bg-[#f4f4f4]'/>
-                </div>
-
-            </div>
-
         </nav>
         // <></>
     )

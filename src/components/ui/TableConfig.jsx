@@ -4,7 +4,7 @@ function Table({ className, ...props }) {
   return (
     <div
       data-slot="table-container"
-      className="relative bg-[#2a2a2a] rounded-xl w-300 mx-auto overflow-x-auto text-white text-2xl font-onest align-items-center overflow-hidden shadow-2xl border border-neutral-700/50"
+      className="relative bg-[#2a2a2a] rounded-xl w-full mx-auto overflow-x-auto text-white text-2xl font-onest align-items-center overflow-hidden shadow-2xl border border-neutral-700/50"
     >
       <table
         data-slot="table"
