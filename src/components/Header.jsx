@@ -1,7 +1,7 @@
 import { ChevronRight, Search } from 'lucide-react'
 import '../App.css'
 
-const Header = ({ sidebarToggle, setSidebarToggle }) => {
+export const Header = ({ sidebarToggle, setSidebarToggle }) => {
     return (
         <nav className="w-full py-10 px-8 transition-all duration-300 flex items-center justify-between">
             <div className='flex items-center gap-6'>
@@ -27,5 +27,4 @@ const Header = ({ sidebarToggle, setSidebarToggle }) => {
     )
 }
 
-
-export default Header;
+// export default Header;

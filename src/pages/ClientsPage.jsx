@@ -6,7 +6,6 @@ const Clients = () => {
     return (
         <>
             <div className="justify-start">
-                {/* TODO: ALIGN BUTTONS AND TABLE, ADD DELETE AND EDIT BUTTONS TO TABLE */}
                 <ClientsTable />
             </div>
         </>

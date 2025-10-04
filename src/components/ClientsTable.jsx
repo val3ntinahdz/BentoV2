@@ -1,5 +1,8 @@
-import { EditIcon, Eye, SaveIcon, Search, Trash } from "lucide-react"
+import { useState, useEffect } from "react"
+import { getClients } from "../../services/api"
 import Button from "./Button"
+
+import { EditIcon, Eye, SaveIcon, Search, Trash } from "lucide-react"
 
 import {
   Table,
@@ -11,55 +14,40 @@ import {
   TableRow,
 } from "./ui/TableConfig"
 
-const clients = [
-  {
-    id: "CLI001",
-    name: "John Doe",
-    company: "Acme Corp",
-    email: "john@acme.com",
-    phone: "+1 234-567-890",
-    project: "Website Redesign",
-    totalAmount: "$2,500.00",
-  },
-  {
-    id: "CLI002",
-    name: "Jane Smith",
-    company: "TechStart Inc",
-    email: "jane@techstart.com",
-    phone: "+1 234-567-891",
-    project: "Mobile App",
-    totalAmount: "$5,200.00",
-  },
-  {
-    id: "CLI003",
-    name: "Mike Johnson",
-    company: "Digital Solutions",
-    email: "mike@digital.com",
-    phone: "+1 234-567-892",
-    project: "E-commerce Platform",
-    totalAmount: "$8,900.00",
-  },
-  {
-    id: "CLI004",
-    name: "Sarah Williams",
-    company: "Creative Studio",
-    email: "sarah@creative.com",
-    phone: "+1 234-567-893",
-    project: "Brand Identity",
-    totalAmount: "$3,400.00",
-  },
-  {
-    id: "CLI005",
-    name: "David Brown",
-    company: "Startup Labs",
-    email: "david@startup.com",
-    phone: "+1 234-567-894",
-    project: "MVP Development",
-    totalAmount: "$12,000.00",
-  },
-]
 
 export const ClientsTable = () => {
+  const [ clients, setClients ] = useState([]);
+  const [ isLoading, setIsLoading ] = useState(false);
+  const [ error, setError ] = useState(null);
+
+  // bring client data from api
+  useEffect(() => {
+    setIsLoading(true);
+    const fetchData = async () => {
+      try {
+        const data = await getClients();
+        console.log("Clients data: ", data);
+        setClients(data);
+        
+      } catch (error) {
+        setError(error.message);
+        
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    console.log("Loading...");
+  }
+
+  if (error) {
+    console.error(error);
+  }
+
   return (
     <div className="w-full space-y-6 px-12 pb-10">
       {/* Header Section */}
@@ -97,6 +85,8 @@ export const ClientsTable = () => {
               <TableHead className="text-neutral-400 font-semibold">Company</TableHead>
               <TableHead className="text-neutral-400 font-semibold">Email</TableHead>
               <TableHead className="text-neutral-400 font-semibold">Phone</TableHead>
+              <TableHead className="text-neutral-400 font-semibold">Status</TableHead>
+              <TableHead className="text-neutral-400 font-semibold">Priority</TableHead>
               <TableHead className="text-neutral-400 font-semibold">Project</TableHead>
               <TableHead className="text-center text-neutral-400 font-semibold">Actions</TableHead>
             </TableRow>
@@ -119,6 +109,12 @@ export const ClientsTable = () => {
                 </TableCell>
                 <TableCell className="text-neutral-400">
                   {client.phone}
+                </TableCell>
+                <TableCell className="text-neutral-400">
+                  {client.status}
+                </TableCell>
+                <TableCell className="text-neutral-400">
+                  {client.priority}
                 </TableCell>
                 <TableCell className="text-neutral-300">
                   <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-[#967be7]/20 text-[#967be7] border border-[#967be7]/30">
@@ -167,7 +163,7 @@ export const ClientsTable = () => {
           
           <TableFooter>
             <TableRow className="border-t border-neutral-800 bg-neutral-800/30 hover:bg-neutral-900/50">
-              <TableCell colSpan={5} className="font-bold text-neutral-300">
+              <TableCell colSpan={7} className="font-bold text-neutral-300">
                 Total Clients: {clients.length}
               </TableCell>
               <TableCell className="text-center font-bold text-white">
