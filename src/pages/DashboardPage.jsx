@@ -1,6 +1,11 @@
+import ClientForm from "../components/ClientForm";
+
 const Dashboard = () => {
     return (
-        <div>Hello</div>
+        <>
+            <div className="text-white">Hello</div>
+            <ClientForm /> 
+        </>
     )
 }
 
