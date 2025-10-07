@@ -171,7 +171,7 @@ export const ClientsTable = () => {
                   Total Clients: {clients.length}
                 </TableCell>
                 <TableCell className="text-center font-bold text-white">
-                  $32,000.00
+                  {/* // to add total in sales */}
                 </TableCell>
               </TableRow>
             </TableFooter>

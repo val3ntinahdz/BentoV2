@@ -1,4 +1,3 @@
-import Button from "../components/Button";
 import { ClientsTable } from "../components/ClientsTable";
 
 

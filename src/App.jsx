@@ -10,8 +10,6 @@ import Clients from './pages/ClientsPage';
 import { Header } from './components/Header';
 import { Sidebar } from './components/Sidebar';
 
-// Import lucide-react icons
-import { ChevronRight } from 'lucide-react';
 // Import styles
 import './App.css'
 import { useState } from 'react';
