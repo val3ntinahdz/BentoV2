@@ -1,124 +1,14 @@
 {
   "clients": [
     {
-      "id": "CLI-001",
-      "name": "Sarah Anderson",
-      "company": "TechVision Inc",
-      "email": "sarah.anderson@techvision.com",
-      "phone": "+1 (555) 123-4567",
-      "project": "E-commerce Platform",
+      "id": "519c",
+      "name": "Zoé León",
+      "company": "Zoe Studios",
+      "email": "zoeleon13@gmail.com",
+      "phone": "951 100 0894",
       "status": "active",
-      "priority": "high"
-    },
-    {
-      "id": "CLI-002",
-      "name": "Michael Chen",
-      "company": "Digital Dynamics",
-      "email": "m.chen@digitaldynamics.io",
-      "phone": "+1 (555) 234-5678",
-      "project": "Mobile App Development",
-      "status": "active",
-      "priority": "high"
-    },
-    {
-      "id": "CLI-003",
-      "name": "Emily Rodriguez",
-      "company": "Creative Studios Pro",
-      "email": "emily.r@creativestudios.com",
-      "phone": "+1 (555) 345-6789",
-      "project": "Brand Identity Redesign",
-      "status": "lead",
-      "priority": "medium"
-    },
-    {
-      "id": "CLI-004",
-      "name": "David Kim",
-      "company": "FinTech Solutions",
-      "email": "david.kim@fintechsol.com",
-      "phone": "+1 (555) 456-7890",
-      "project": "Payment Gateway Integration",
-      "status": "active",
-      "priority": "high"
-    },
-    {
-      "id": "CLI-005",
-      "name": "Jessica Taylor",
-      "company": "EcoGreen Innovations",
-      "email": "j.taylor@ecogreen.com",
-      "phone": "+1 (555) 567-8901",
-      "project": "Sustainability Dashboard",
-      "status": "active",
-      "priority": "medium"
-    },
-    {
-      "id": "CLI-006",
-      "name": "Robert Martinez",
-      "company": "HealthCare Plus",
-      "email": "r.martinez@healthcareplus.com",
-      "phone": "+1 (555) 678-9012",
-      "project": "Patient Management System",
-      "status": "active",
-      "priority": "high"
-    },
-    {
-      "id": "CLI-007",
-      "name": "Amanda White",
-      "company": "Retail Revolution",
-      "email": "amanda.w@retailrev.com",
-      "phone": "+1 (555) 789-0123",
-      "project": "Inventory Management",
-      "status": "lead",
-      "priority": "low"
-    },
-    {
-      "id": "CLI-008",
-      "name": "James Wilson",
-      "company": "AI Labs",
-      "email": "james.wilson@ailabs.tech",
-      "phone": "+1 (555) 890-1234",
-      "project": "Machine Learning Platform",
-      "status": "active",
-      "priority": "high"
-    },
-    {
-      "id": "CLI-009",
-      "name": "Maria Garcia",
-      "company": "EduTech Connect",
-      "email": "maria.g@edutech.com",
-      "phone": "+1 (555) 901-2345",
-      "project": "Learning Management System",
-      "status": "inactive",
-      "priority": "low"
-    },
-    {
-      "id": "CLI-010",
-      "name": "Christopher Lee",
-      "company": "LogiFlow Systems",
-      "email": "c.lee@logiflow.com",
-      "phone": "+1 (555) 012-3456",
-      "project": "Supply Chain Optimization",
-      "status": "active",
-      "priority": "medium"
-    },
-    {
-      "id": "CLI-011",
-      "name": "Sophie Bernard",
-      "company": "Fashion Forward",
-      "email": "sophie@fashionforward.fr",
-      "phone": "+33 1 42 86 82 00",
-      "project": "E-commerce Redesign",
-      "status": "lead",
-      "priority": "medium"
-    },
-    {
-      "id": "CLI-012",
-      "name": "Daniel Brown",
-      "company": "Real Estate Pro",
-      "email": "dan.brown@realestatepro.com",
-      "phone": "+1 (555) 123-9876",
-      "project": "Property Management Portal",
-      "status": "active",
-      "priority": "high"
+      "priority": "high",
+      "project": "AI automation"
     },
     {
       "id": "bbae",
@@ -146,6 +36,56 @@
       "company": "Ford Motor Company",
       "email": "andresesq@gmail.com",
       "phone": "5567809072",
+      "status": "active",
+      "priority": "high",
+      "project": "AI automation"
+    },
+    {
+      "id": "9fab",
+      "name": "María Fernanda Jauregui",
+      "company": "TickPlick",
+      "email": "mafjaure@gmail.com",
+      "phone": "527898909",
+      "status": "inactive",
+      "priority": "low",
+      "project": "Ticket system"
+    },
+    {
+      "id": "61a9",
+      "name": "Samantha Munguía",
+      "company": "Gain Dynamics",
+      "email": "sammungui@gmail.com",
+      "phone": "556788990",
+      "status": "lead",
+      "priority": "medium",
+      "project": "Website design"
+    },
+    {
+      "id": "e064",
+      "name": "Janet Lilian Padilla",
+      "company": "HP Group",
+      "email": "jlidec@gmail.com",
+      "phone": "951 310 9172",
+      "status": "inactive",
+      "priority": "medium",
+      "project": "Finance tracker"
+    },
+    {
+      "id": "08cd",
+      "name": "Albert Camus",
+      "company": "L´etranger",
+      "email": "camusalbertlol@gmail.com",
+      "phone": "96382793",
+      "status": "active",
+      "priority": "high",
+      "project": "Book platform"
+    },
+    {
+      "id": "0889",
+      "name": "Valentina León",
+      "company": "Google",
+      "email": "eng.valeon@gmail.com",
+      "phone": "951 579 2953",
       "status": "active",
       "priority": "high",
       "project": "AI automation"

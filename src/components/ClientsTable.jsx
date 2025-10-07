@@ -180,7 +180,13 @@ export const ClientsTable = () => {
       </div>
 
       {showModal && (
-        <ClientForm onClose={() => setShowModal(false)} /> // ClientForm receives a prop called (OnClose) that closes the modal when clicking on the "X" button
+        <ClientForm 
+          onClose={() => setShowModal(false)} 
+          onClientCreated={(newClient) => {
+            setClients([...clients, newClient]);
+          }}
+        
+        /> // ClientForm receives a prop called (OnClose) that closes the modal when clicking on the "X" button
       )}
     </>
   )

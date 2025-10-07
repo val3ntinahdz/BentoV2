@@ -1,8 +1,8 @@
 import { XCircle } from "lucide-react";
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { createClient } from "../../services/api";
 
-const ClientForm = ({ onClose }) => {
+const ClientForm = ({ onClose, onClientCreated }) => {
   const [ formData, setFormData ] = useState({
     
     name: '',
@@ -14,9 +14,6 @@ const ClientForm = ({ onClose }) => {
     project: '',
   });
 
-  const [ data, setData ]  = useState([]);
-  
-
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData(prev => ({...prev, [name]: value}));
@@ -27,8 +24,10 @@ const ClientForm = ({ onClose }) => {
     event.preventDefault();
 
     try {
-      await createClient(formData);
+      const createdClient = await createClient(formData);
       alert('Data saved successfully!');
+      onClientCreated(createdClient);
+
 
       setFormData({
         name: '',
@@ -49,9 +48,6 @@ const ClientForm = ({ onClose }) => {
 
   };
 
-  useEffect(() => {
-    setData(formData);
-  }, formData)
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-6 z-50">
