@@ -119,6 +119,36 @@
       "project": "Property Management Portal",
       "status": "active",
       "priority": "high"
+    },
+    {
+      "id": "bbae",
+      "name": "Camila Acevedo",
+      "company": "Anáhuac",
+      "email": "camacev192@gmail.com",
+      "phone": "9512873879",
+      "status": "active",
+      "priority": "high",
+      "project": "Medical AI Chatbot"
+    },
+    {
+      "id": "e3b7",
+      "name": "Diana Pérez L.",
+      "company": "Buffete Diana S.A de C.V.",
+      "email": "dianaabogada@gmail.com",
+      "phone": "9517834793",
+      "status": "lead",
+      "priority": "medium",
+      "project": "Buffete Landing Page "
+    },
+    {
+      "id": "aefc",
+      "name": "Andrés López",
+      "company": "Ford Motor Company",
+      "email": "andresesq@gmail.com",
+      "phone": "5567809072",
+      "status": "active",
+      "priority": "high",
+      "project": "AI automation"
     }
   ]
 }

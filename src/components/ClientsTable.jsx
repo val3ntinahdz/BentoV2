@@ -171,7 +171,6 @@ export const ClientsTable = () => {
                   Total Clients: {clients.length}
                 </TableCell>
                 <TableCell className="text-center font-bold text-white">
-                  {/* Puedes calcular el total aquí */}
                   $32,000.00
                 </TableCell>
               </TableRow>
@@ -181,8 +180,7 @@ export const ClientsTable = () => {
       </div>
 
       {showModal && (
-        <ClientForm onClose={() => setShowModal(false)} />
-        
+        <ClientForm onClose={() => setShowModal(false)} /> // ClientForm receives a prop called (OnClose) that closes the modal when clicking on the "X" button
       )}
     </>
   )
