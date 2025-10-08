@@ -17,8 +17,15 @@ app.get('/', (req, res) => {
 	res.send('HELLO');
 });
 
-app.get('/clients', (req, res) => {
-	res.send("Clients already functioning");
+// Get all the clients
+app.get('/clients', async (req, res) => {
+	try {
+        const clients = await Client.find({});
+        console.log("All clients", clients)
+        res.status(200).json(clients);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
 });
 
 // Save data in the database
