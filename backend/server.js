@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 app.use(json());
 
-const PORT = 3001;
+const PORT = 3000;
 
 // Routes
 app.get('/', (req, res) => {
@@ -73,6 +73,26 @@ app.put('/client/:id', async (req, res) => {
         
     }
 })
+
+// Delete a client
+
+app.delete('/client/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const client = await Client.findByIdAndDelete(id)
+        console.log("Client to delete", client);
+
+        if (!client) {
+            return res.status(404).json({ message: "Client not found" });
+        }
+
+        res.status(200).json({ message: "Client deleted succesfully" });
+        
+    } catch (error) {
+        res.status(500).json({ message: error.message });  
+    }
+})
+
 
 app.get('/health', (req, res) => {
 	res.json({ status: "Server is correctly running!" });

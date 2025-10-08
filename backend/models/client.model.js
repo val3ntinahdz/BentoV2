@@ -24,7 +24,8 @@ const ClientSchema = mongoose.Schema(
 
       status: {
         type: String, 
-        required: [ true, "Status is required" ],
+        enum: ['active', 'lead', 'inactive'],
+        default: 'active',
       },
 
       priority: {
