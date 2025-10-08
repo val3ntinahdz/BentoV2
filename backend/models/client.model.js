@@ -30,7 +30,8 @@ const ClientSchema = mongoose.Schema(
 
       priority: {
         type: String, 
-        required: [ true, "Company name is required" ],
+        enum: ['high', 'medium', 'low'],
+        default: 'high',
       },
 
       project: {
@@ -46,5 +47,4 @@ const ClientSchema = mongoose.Schema(
 
 // Create a model to store data in MongoDB
 const Client = mongoose.model("Client", ClientSchema);
-
 export default Client;
