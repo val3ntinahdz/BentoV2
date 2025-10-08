@@ -28,12 +28,44 @@ app.get('/clients', async (req, res) => {
     }
 });
 
+app.get('/client/:id', async (req, res) => {
+	try {
+        const { id } = req.params;
+        const client = await Client.findById(id);
+        console.log("Found client by Id:", client);
+        res.status(200).json(client);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
 // Save data in the database
 app.post('/clients/new', async (req, res) => {
     try {
         console.log("Received data", req.body);
         const client = await Client.create(req.body);
         res.status(200).json(client);
+
+    } catch (error) {
+        console.log("Full error", error);
+        res.status(500).json({ message: error.message });
+        
+    }
+})
+
+// Update client data
+app.put('/client/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const client = await Client.findByIdAndUpdate(id, req.body);
+
+        if (!client) {
+            return res.status(404).json({ message: "Client not found" })
+        }
+        
+        const updatedClient = await Client.findById(id);
+        console.log(updatedClient);
+        res.status(200).json(updatedClient);
 
     } catch (error) {
         console.log("Full error", error);
