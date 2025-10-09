@@ -71,6 +71,8 @@ export const ClientsTable = () => {
   const handleDelete = (clientId) => {
     setShowDeleteModal(true);
     setClientToDelete(clientId);
+
+    setClients(prevData => prevData.filter(item => item._id !== clientId));
   }
 
   const handleChanges = (clientChanged) => {
