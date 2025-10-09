@@ -15,13 +15,16 @@ import {
 } from "./ui/TableConfig"
 
 import ClientForm from "./ClientForm"
+import ConfirmationModal from "./ConfirmationModal"
 
 
 export const ClientsTable = () => {
   const [ clients, setClients ] = useState([]);
   const [ showModal, setShowModal ] = useState(false);
+  const [ showDeleteModal, setShowDeleteModal ] = useState(false);
   const [ isEditing, setIsEditing ] = useState(false);
   const [ clientToEdit, setClientToEdit ] = useState(null);
+  const [ clientToDelete, setClientToDelete ] = useState(null);
   const [ isLoading, setIsLoading ] = useState(false);
   const [ error, setError ] = useState(null);
 
@@ -63,6 +66,11 @@ export const ClientsTable = () => {
     setIsEditing(false);
     setClientToEdit(null);
     setShowModal(true);
+  }
+  
+  const handleDelete = (clientId) => {
+    setShowDeleteModal(true);
+    setClientToDelete(clientId);
   }
 
   const handleChanges = (clientChanged) => {
@@ -179,11 +187,7 @@ export const ClientsTable = () => {
                         <SaveIcon className="w-4 h-4" />
                       </button>
                       <button
-                        onClick={() => {
-                          if (confirm(`Delete ${client.name}?`)) {
-                            alert("Deleted!")
-                          }
-                        }}
+                        onClick={() => handleDelete(client._id)}
                         className="p-2 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500/20 hover:scale-110 transition-all"
                         title="Delete"
                       >
@@ -215,8 +219,14 @@ export const ClientsTable = () => {
           onClientChanged={(clientChanged) => handleChanges(clientChanged)}
           clientToEdit={clientToEdit}
           isEditing={isEditing}
-        
         /> // ClientForm receives a prop called (OnClose) that closes the modal when clicking on the "X" button
+      )}
+
+      {showDeleteModal && (
+        <ConfirmationModal 
+          onClose={() => setShowDeleteModal(false)}
+          clientId={clientToDelete}
+        />
       )}
     </>
   )
