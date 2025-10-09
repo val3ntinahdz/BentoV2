@@ -21,8 +21,11 @@ const ConfirmationModal = ({ onClose, clientId }) => {
             {/* inset-[value]: A shorthand for setting all four sides (top, right, bottom, left) to the same value.  */}
             <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
                 <div className="bg-[#2a2a2a] rounded-2xl border border-neutral-800 shadow-2xl p-9 w-90 h-auto">
-                    <div className="items-center">
-                        <TriangleAlert className="text-white text-center text-3xl"/> 
+                    <div className="justify-center m-auto">
+                        <div className="flex justify-center mb-4">
+                            <TriangleAlert className="text-[#C8E678]" />
+                        </div>
+                        
                         <h1 className="font-onest text-3xl mb-2 text-white text-center">Are you sure?</h1>
                         <p className="font-onest text-md text-neutral-400 text-center">This action can't be undone. Please confirm if you want to proceed.</p>  
                         <div className="flex gap-x-10 mt-7 justify-between">
@@ -40,8 +43,6 @@ const ConfirmationModal = ({ onClose, clientId }) => {
                                 >
                                     Delete
                             </button>
-
-
                         </div>
                     </div>
                 </div>
