@@ -1,24 +1,45 @@
 import { deleteClient, getClientById } from "../../services/api";
-
 import { TriangleAlert } from "lucide-react";
+import Spinner from "./Spinner";
+import { useState } from "react";
 
 const ConfirmationModal = ({ onClose, clientId }) => {
+    const [ spinner, setSpinner ] = useState(false);
+    const [ isDeleting, setIsDeleting ] = useState(false);
 
     const handleClickAndDelete = async () => {
-        const clientToDelete = await getClientById(clientId);
-        const deletedClient = await deleteClient(clientToDelete._id);
-        console.log("Deleted client: ", deletedClient);
+        setSpinner(true);
+        setIsDeleting(true);
 
-        if (deletedClient) {
-            setTimeout(() => onClose(), 2000);
-            // TODO: add loader for UX optimization
-            // TODO: implement error handling for edge cases
+        try {
+            
+            const clientToDelete = await getClientById(clientId);
+            const deletedClient = await deleteClient(clientToDelete._id);
+            console.log("Deleted client: ", deletedClient);
+    
+            if (deletedClient) {
+                setTimeout(() => {
+                    setSpinner(false);
+                }, 3000);
+    
+                setTimeout(() => {
+                    onClose();
+                    setIsDeleting(false);
+                }, 3500);
+            }
+
+        } catch (error) {
+            console.error("Error deleting client:", error);
+            setSpinner(false);
+            setIsDeleting(false);
         }
+
     } 
 
     return (
         <>
             {/* inset-[value]: A shorthand for setting all four sides (top, right, bottom, left) to the same value.  */}
+            
             <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
                 <div className="bg-[#2a2a2a] rounded-2xl border border-neutral-800 shadow-2xl p-9 w-90 h-auto">
                     <div className="justify-center m-auto">
@@ -47,6 +68,11 @@ const ConfirmationModal = ({ onClose, clientId }) => {
                     </div>
                 </div>
             </div>
+
+            {spinner && (
+                    <Spinner />  
+                )
+            }
         
         </>
     )

@@ -16,6 +16,7 @@ import {
 
 import ClientForm from "./ClientForm"
 import ConfirmationModal from "./ConfirmationModal"
+import Spinner from "./Spinner"
 
 
 export const ClientsTable = () => {
@@ -31,6 +32,7 @@ export const ClientsTable = () => {
   // bring client data from api
   useEffect(() => {
     setIsLoading(true);
+
     const fetchData = async () => {
       try {
         const data = await getClients();
@@ -49,7 +51,7 @@ export const ClientsTable = () => {
   }, []);
 
   if (isLoading) {
-    console.log("Loading...");
+    <Spinner />
   }
 
   if (error) {
