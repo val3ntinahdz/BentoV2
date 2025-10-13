@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { getClients } from "../../services/api"
 import Button from "./Button"
 
-import { EditIcon, Eye, SaveIcon, Search, Trash } from "lucide-react"
+import { EditIcon, Eye, SaveIcon, Trash } from "lucide-react"
 
 import {
   Table,
@@ -18,23 +18,40 @@ import ClientForm from "./ClientForm"
 import ConfirmationModal from "./ConfirmationModal"
 import Spinner from "./Spinner"
 import ClientDetailsSidebar from "./ClientDetailsSidebar"
-
+import SearchInput from "./SearchInput"
 
 export const ClientsTable = () => {
   const [ clients, setClients ] = useState([]);
+  const [ searchTerm, setSearchTerm ] = useState('');
+  const [ isSearching, setIsSearching ] = useState(false);
+  
   const [ showModal, setShowModal ] = useState(false);
-
   const [ showDeleteModal, setShowDeleteModal ] = useState(false);
   const [ isEditing, setIsEditing ] = useState(false);
-
+  
   const [ clientToEdit, setClientToEdit ] = useState(null);
   const [ clientToDelete, setClientToDelete ] = useState(null);
   const [ clientData, setClientData ] = useState(null);
-
+  
   const [ detailsSidebar, setDetailsSidebar ] = useState(false);
-
+  // See if the search input exists, if so, change the clients.map to searchResults.map (with condition);
+  
   const [ isLoading, setIsLoading ] = useState(false);
   const [ error, setError ] = useState(null);
+  
+  // instead of storing the search results in the state, compute them using useMemo()
+  const searchResults = useMemo(() => {
+    if (!searchTerm.trim()) return clients;
+    
+    // make the search term case insensitive
+    const lowerCaseTerm = searchTerm.toLowerCase();
+    const results = clients.filter(client =>
+      client.name?.toLowerCase().includes(lowerCaseTerm) ||
+      client.company?.toLowerCase().includes(lowerCaseTerm)
+    )
+
+    return results; 
+  }, [clients, searchTerm]);
 
   // bring client data from api
   useEffect(() => {
@@ -107,24 +124,21 @@ export const ClientsTable = () => {
     }
   }
 
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+
+    // convert term into boolean
+    setIsSearching(!!term.trim());
+  }
+
+  const displayedClients = isSearching ? searchResults : clients; 
+
   return (
     <>
       <div className="w-full space-y-6 px-12 pb-10">
         {/* Header */}
         <div className="flex items-center justify-between gap-4">
-          <div className="flex items-center gap-x-5">
-            <div className="relative w-full sm:w-64 md:w-80">
-              <span className="absolute inset-y-0 left-0 flex items-center pl-4">
-                <Search className="h-5 w-5 text-neutral-500" />
-              </span>
-              
-              <input
-                type="text"
-                placeholder="Search clients..."
-                className="w-full text-white py-2.5 px-6 pl-12 rounded-xl shadow-sm outline-none hidden md:block border border-neutral-800 focus:border-[#967be7] focus:ring-2 focus:ring-[#967be7]/20 transition-all bg-[#2a2a2a] font-onest placeholder:text-neutral-600"
-              />
-            </div>
-          </div>
+          <SearchInput onSearch={handleSearch} />
 
           <Button
             onClick={handleCreate}
@@ -153,7 +167,7 @@ export const ClientsTable = () => {
             </TableHeader>
             
             <TableBody>
-              {clients.map((client) => (
+              {displayedClients.map((client) => (
                 <TableRow
                   key={client.id}
                   className="border-b border-neutral-800 hover:bg-neutral-800/30 transition-colors"
