@@ -17,15 +17,22 @@ import {
 import ClientForm from "./ClientForm"
 import ConfirmationModal from "./ConfirmationModal"
 import Spinner from "./Spinner"
+import ClientDetailsSidebar from "./ClientDetailsSidebar"
 
 
 export const ClientsTable = () => {
   const [ clients, setClients ] = useState([]);
   const [ showModal, setShowModal ] = useState(false);
+
   const [ showDeleteModal, setShowDeleteModal ] = useState(false);
   const [ isEditing, setIsEditing ] = useState(false);
+
   const [ clientToEdit, setClientToEdit ] = useState(null);
   const [ clientToDelete, setClientToDelete ] = useState(null);
+  const [ clientData, setClientData ] = useState(null);
+
+  const [ detailsSidebar, setDetailsSidebar ] = useState(false);
+
   const [ isLoading, setIsLoading ] = useState(false);
   const [ error, setError ] = useState(null);
 
@@ -75,6 +82,13 @@ export const ClientsTable = () => {
     setClientToDelete(clientId);
 
     setClients(prevData => prevData.filter(item => item._id !== clientId));
+  }
+
+  const handleClientDetails = (client) => {
+    console.log("You clicked the details btn");
+    setClientData(client);
+    console.log("View the details of the client: ", clientData);
+    setDetailsSidebar(true);
   }
 
   const handleChanges = (clientChanged) => {
@@ -177,7 +191,7 @@ export const ClientsTable = () => {
                         <EditIcon className="w-4 h-4" />
                       </button>
                       <button
-                        onClick={() => alert(`View ${client.name}`)}
+                        onClick={() => handleClientDetails(client)}
                         className="p-2 rounded-lg bg-[#fbbf24]/10 text-[#fbbf24] hover:bg-[#fbbf24]/20 hover:scale-110 transition-all"
                         title="View Details"
                       >
@@ -231,6 +245,16 @@ export const ClientsTable = () => {
           onClose={() => setShowDeleteModal(false)}
           clientId={clientToDelete}
         />
+      )}
+
+
+      {/* Open sidebar */}
+      {detailsSidebar && (
+        <ClientDetailsSidebar 
+          isOpen={detailsSidebar}
+          clientData={clientData}
+          onClose={() => setDetailsSidebar(false)}
+        /> 
       )}
     </>
   )
